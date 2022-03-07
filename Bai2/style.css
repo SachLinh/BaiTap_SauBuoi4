@@ -1,0 +1,73 @@
+/** @format */
+
+body {
+	width: 1300px;
+	margin: 0 auto;
+	padding: 0;
+}
+.container {
+	padding-top: 100px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.timer {
+	padding: 20px;
+	border: 4px solid black;
+	border-radius: 20px;
+	background-color: rgb(243, 243, 243);
+}
+.hours,
+.minutes,
+.seconds {
+	font-size: 80px;
+}
+.btns {
+	display: flex;
+	width: 360px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.btn_start,
+.btn_clear {
+	padding: 15px;
+	font-size: 30px;
+	border: 4px solid black;
+	border-radius: 10px;
+	background-image: linear-gradient(
+		to top,
+		rgb(126, 241, 19),
+		rgb(28, 161, 1)
+	);
+	width: 140px;
+}
+.btn_clear {
+	background-image: linear-gradient(
+		to top,
+		rgb(255, 131, 49),
+		rgb(253, 2, 15)
+	);
+}
+.numbers {
+	display: flex;
+	width: 360px;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.numbers input {
+	width: 70px;
+	padding: 15px;
+	background-image: linear-gradient(
+		to top,
+		rgb(241, 188, 188),
+		rgb(214, 172, 248)
+	);
+	margin-bottom: 10px;
+	color: rgb(0, 0, 0);
+	font-size: 30px;
+}

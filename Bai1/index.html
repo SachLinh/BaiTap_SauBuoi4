@@ -1,0 +1,117 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>STOP WATCH</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="timer">
+				<span class="hours" id="hour">00</span>:
+				<span class="minutes" id="minute">00</span>:
+				<span class="seconds" id="second">00</span>
+				<span class="milliseconds" id="millisecond">00</span>
+			</h1>
+			<div class="btns">
+				<button class="btn_start" id="btn_start" onclick="startStop()">
+					START
+				</button>
+				<button class="btn_clear" id="btn_clear" onclick="Reset()">
+					CLEAR
+				</button>
+			</div>
+		</div>
+
+		<script>
+			var startstop = 0;
+			function startStop() {
+				startstop += 1;
+				if (startstop == 1) {
+					start();
+					document.getElementById('btn_start').innerHTML = 'PAUSE';
+				} else {
+					if (startstop == 2) {
+						pause();
+						document.getElementById('btn_start').innerHTML = 'CONTINUE';
+					} else {
+						if (startstop == 3) {
+							contineu();
+							document.getElementById('btn_start').innerHTML = 'PAUSE';
+							startstop = 1;
+						}
+					}
+				}
+			}
+			var x;
+			function start() {
+				x = setInterval(timer, 10);
+			}
+			function pause() {
+				clearInterval(x);
+			}
+			function contineu() {
+				x = setInterval(timer, 10);
+			}
+			/* Contains and outputs returned value of  function checkTime */
+			var milliSecond = 0;
+			var second = 0;
+			var minutes = 0;
+			var hours = 0;
+			/**/
+			var milisec = 0;
+			var sec = 0; /* holds incrementing value */
+			var min = 0;
+			var hour = 0;
+			function checkTime(i) {
+				if (i < 10) {
+					i = '0' + i;
+				}
+				return i;
+			}
+			function timer() {
+				milliSecond = checkTime(milisec);
+				second = checkTime(sec);
+				minutes = checkTime(min);
+				hours = checkTime(hour);
+				milisec = ++milisec;
+				if (milisec === 100) {
+					milisec = 0;
+					sec = ++sec;
+				}
+				if (sec === 60) {
+					sec = 0;
+					min = ++min;
+				}
+				if (min === 60) {
+					min = 0;
+					hour = ++hour;
+				}
+				document.getElementById('millisecond').innerHTML = milliSecond;
+				document.getElementById('second').innerHTML = second;
+				document.getElementById('minute').innerHTML = minutes;
+				document.getElementById('hour').innerHTML = hours;
+			}
+			function Reset() {
+				/*Clear*/
+
+				milisec = 0;
+				sec = 0;
+				min = 0;
+				hour = 0;
+
+				document.getElementById('millisecond').innerHTML = '00';
+				document.getElementById('second').innerHTML = '00';
+				document.getElementById('minute').innerHTML = '00';
+				document.getElementById('hour').innerHTML = '00';
+				pause();
+				startstop = 0;
+				document.getElementById('btn_start').innerHTML = 'START';
+			}
+		</script>
+	</body>
+</html>
